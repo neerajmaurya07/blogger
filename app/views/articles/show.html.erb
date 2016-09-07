@@ -1,6 +1,8 @@
 <h1>Article</h1>
+<p><%= link_to "Article list", articles_path %></p>
 <div>
 	<p><h4><%= @article.title %></h4></p>
 	<p><%= @article.body %></p>
 </div>
-<p><%= link_to "Article list", articles_path %></p>
+<h3>Comments</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
