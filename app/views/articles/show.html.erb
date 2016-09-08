@@ -5,4 +5,5 @@
 	<p><%= @article.body %></p>
 </div>
 <h3>Comments</h3>
+<%= render partial: 'comments/form' %>
 <%= render partial: 'articles/comment', collection: @article.comments %>

@@ -6,8 +6,10 @@ class ArticlesController < ApplicationController
 		@article = Article.new
 	end
 	def show
-
 		@article = Article.find(params[:id])
+		@comment = Comment.new
+		
+
 	end
 	def create
 		@article = Article.new(article_params)

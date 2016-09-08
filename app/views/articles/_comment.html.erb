@@ -1,4 +1,7 @@
 <div>
-  <h4>Comment by <%= @comment.author_name %></h4>
-  <p class="comment"><%= @comment.body %></p>
+  <h4>Comment by <%= comment.auther_name %></h4>
+  <p class="comment"><%= comment.body %></p>
+ 
+  <p><%= link_to 'Edit', edit_article_comment_path(comment.article, comment) %></p>
+  <p><%= link_to 'Delete', article_comment_path(comment.article, comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 </div>
