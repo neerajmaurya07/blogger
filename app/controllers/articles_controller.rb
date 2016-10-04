@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+	before_action :authenticate_user!
 	def index
 		@articles = Article.all
 	end
@@ -8,11 +9,11 @@ class ArticlesController < ApplicationController
 	def show
 		@article = Article.find(params[:id])
 		@comment = Comment.new
-		
-
-	end
+	end			
+	
 	def create
 		@article = Article.new(article_params)
+		@article.user_id = current_user.id
 		@article.save
 		redirect_to @article	
 	end
@@ -21,6 +22,7 @@ class ArticlesController < ApplicationController
 	end
 	def update
 		@article = Article.find(params[:id])
+		@article.user_id = current_user.id
 		@article.update(article_params)
 		redirect_to @article
 	end
@@ -31,6 +33,6 @@ class ArticlesController < ApplicationController
 	end
 	private
 		def article_params
-			params.require(:article).permit(:title,:body)		
+			params.require(:article).permit(:title,:body,:tag_list)		
 		end
 end

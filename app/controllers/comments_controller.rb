@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
 	def create
+	  @user = User.all
 	  @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+		@comment = @article.comments.create(comment_params)
     redirect_to article_path(@article)
 	end
 	def edit
@@ -9,7 +10,7 @@ class CommentsController < ApplicationController
 		@comment = @article.comments.find(params[:id]) 
 	end
 	def update
-		byebug
+		
 		@comment = Comment.find(params[:id])
 		@article = @comment.article 
 		@comment.update(comment_params)

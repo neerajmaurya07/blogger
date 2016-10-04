@@ -1,15 +1,14 @@
-<h3>Post a Comment</h3>
 
-<%= form_for [ @article, @comment ] do |f| %>
-  <p>
-    <%= f.label :auther_name %><br/>
-    <%= f.text_field :auther_name %>
-  </p>
-  <p>
-    <%= f.label :body %><br/>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit 'Submit' %>
-  </p>
+<%= form_for [ @article, @comment ], class: "form-horizontal", role: "form" do |f| %>
+  <div class="form-group">                    
+    <%= f.label :auther_name %>
+    <%= f.text_field :auther_name, :class => "form-control" %>
+  </div>
+  <div class="form-group">                    
+    <%= f.label :comment %>
+    <%= f.text_area :body, :class => "form-control" %>
+  </div>
+  
+    <%= f.submit 'Submit', :class => "btn btn-primary" %>
+  
 <% end %>

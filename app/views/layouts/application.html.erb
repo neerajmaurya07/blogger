@@ -7,7 +7,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header id="myCarousel" class="carousel slide">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/">Portfolio</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+          <% if user_signed_in? %>
 
+
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+            <p class="navbar-text pull-right">
+            <a href="#"><%= current_user.fname %></a>
+            </p>
+          <% else %>
+            <p class="navbar-text pull-right">
+           
+            <a class="navbar-link" href="/auth/register/cmon_let_me_in">Sign up</a>
+            </p><li>
+              <a href="/auth/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+            </li>
+          <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
 <%= yield %>
 
 </body>
