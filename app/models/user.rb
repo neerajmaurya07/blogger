@@ -4,10 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :articles    
-  after_create:send_email
+ 
+  after_create :send_email
+  
   private
   	def send_email
-  		UserMailer.signup_confirmation(@user).deliver	
+  		UserMailer.signup_confirmation(self).deliver	
   	end
     
    
